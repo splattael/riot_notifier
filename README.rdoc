@@ -35,8 +35,9 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
   gem tumble
   gem install riot_notifier
 
-== TODO
-* talk to DBUS directly (ruby-dbus?) instead of `notify-send` binary
-
 == Authors
 * Peter Suschlik
+
+== TODO
+* talk to DBUS directly (ruby-dbus?) instead of `notify-send` binary
+* riot's assertions support blocks! (like asserts_topic.equals { topic }). Use it!
