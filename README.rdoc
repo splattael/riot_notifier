@@ -9,7 +9,12 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
   require 'riot'
   require 'riot_notifier'
 
+  # Using notify-send (see below for wrapper script)
   Riot.reporter = RiotNotifier::RedgreenNotifier
+
+  # Using libnotify gem (ruby bindings using ffi)
+  # gem install libnotify
+  Riot.reporter = RiotNotifier::Libnotify
 
 == notify_redgreen
 
@@ -41,3 +46,5 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
 == TODO
 * talk to DBUS directly (ruby-dbus?) instead of `notify-send` binary
 * riot's assertions support blocks! (like asserts_topic.equals { topic }). Use it!
+* Test Libnotify somehow
+* Autodetect notify class

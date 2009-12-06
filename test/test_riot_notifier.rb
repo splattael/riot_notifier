@@ -1,3 +1,5 @@
+require 'rubygems'
+
 require 'helper'
 require 'stringio'
 

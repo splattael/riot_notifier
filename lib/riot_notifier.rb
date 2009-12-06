@@ -30,6 +30,34 @@ module RiotNotifier
     end
   end
 
+  class Libnotify < Base
+    OPTIONS = {
+      :green => {
+        :icon_path => "/usr/share/icons/gnome/scalable/emblems/emblem-default.svg",
+        :timeout => 2.5,
+        :urgency => :normal,
+        :summary => ":-)"
+      },
+      :red => {
+        :icon_path => "/usr/share/icons/gnome/scalable/emotes/face-angry.svg",
+        :timeout => 2.5,
+        :urgency => :critical,
+        :summary => ":-("
+      }
+    }
+
+    def initialize
+      require 'libnotify'
+      super()
+    end
+
+    def notify(color, msg)
+      options = OPTIONS[color] or raise "unknown color #{color}"
+
+      ::Libnotify.show(options.merge(:body => msg))
+    end
+  end
+
   class RedgreenNotifier < Base
     attr_reader :path
     PATH = ENV['HOME'] + "/bin/notify_redgreen"
