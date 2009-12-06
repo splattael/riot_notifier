@@ -1,5 +1,5 @@
 module RiotNotifier
-  class Base < Riot::DotMatrixReporter
+  class Base < ::Riot::DotMatrixReporter
     def notify(color, msg)
       # overwrite me
     end

@@ -37,13 +37,11 @@ context "RiotNotifier" do
 
   context "with RedgreenNotifier" do
     setup do
-      klass = RiotNotifier::RedgreenNotifier.dup
-      klass.class_eval do
+      Class.new(RiotNotifier::RedgreenNotifier) do
         def exec(string)
           string
         end
-      end
-      klass.new
+      end.new
     end
 
     asserts("notify green hello world") { topic.notify(:red, "hello world") }.matches(/red "hello world"/)
