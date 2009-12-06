@@ -6,13 +6,13 @@ module RiotNotifier
 
     def fail(desc, message)
       super
-      say "#{desc}: #{message}".yellow
+      say yellow("#{desc}: #{message}")
       notify(:red, "FAILURE: #{message}")
     end
 
     def error(desc, error)
       super
-      say "#{desc}: #{error}".red
+      say red("#{desc}: #{error}")
       notify(:red, "ERROR: #{error}")
     end
 
