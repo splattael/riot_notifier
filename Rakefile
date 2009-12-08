@@ -1,31 +1,34 @@
+require 'rubygems'
 require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
 
-desc 'Default: run unit tests.'
-task :default => :test
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "riot_notifier"
+    gem.summary = 'Simple notifier for riot'
+    gem.email = "peter-riot_notifier@suschlik.de"
+    gem.homepage = "http://github.com/splattael/riot_notifier"
+    gem.authors = ["Peter Suschlik"]
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  gem.name = "riot_notifier"
-  gem.summary = 'Simple notifier for riot'
-  gem.email = "peter-riot_notifier@suschlik.de"
-  gem.homepage = "http://github.com/splattael/riot_notifier"
-  gem.authors = ["Peter Suschlik"]
+    gem.has_rdoc = true
+    gem.extra_rdoc_files = [ "README.rdoc" ]
 
-  gem.has_rdoc = true
-  gem.extra_rdoc_files = [ "README.rdoc" ]
+    gem.add_development_dependency "riot", ">= 0.10.4"
+    gem.add_development_dependency "libnotify"
 
-  gem.add_development_dependency "riot", "= 0.10.4"
-  gem.add_development_dependency "libnotify"
-
-  gem.test_files = Dir.glob('test/test_*.rb')
+    gem.test_files = Dir.glob('test/test_*.rb')
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
-
-Jeweler::GemcutterTasks.new
 
 # Test
 require 'rake/testtask'
+desc 'Default: run unit tests.'
+task :default => :test
+task :test => :check_dependencies
+
 Rake::TestTask.new(:test) do |test|
   test.test_files = FileList.new('test/test_*.rb')
   test.libs << 'test'
@@ -33,6 +36,7 @@ Rake::TestTask.new(:test) do |test|
 end
 
 # RDoc
+require 'rake/rdoctask'
 Rake::RDocTask.new do |rd|
   rd.title = "Riot Notifier"
   rd.main = "README.rdoc"
