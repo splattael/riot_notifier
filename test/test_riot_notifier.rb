@@ -3,7 +3,7 @@ require 'rubygems'
 require 'helper'
 require 'stringio'
 
-class MockNotifier < ::RiotNotifier::Base
+class MockNotifier < ::RiotNotifier::None
   def initialize
     super(StringIO.new)
   end
@@ -11,6 +11,8 @@ class MockNotifier < ::RiotNotifier::Base
   def notify(color, msg)
     [ color, msg ]
   end
+
+  ::RiotNotifier.order.delete(self)
 end
 
 context "RiotNotifier" do

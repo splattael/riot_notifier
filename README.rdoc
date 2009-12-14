@@ -9,35 +9,44 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
   require 'riot'
   require 'riot_notifier'
 
-  # Using notify-send (see below for wrapper script)
-  Riot.reporter = RiotNotifier::RedgreenNotifier
+  # Auto-detect in load order
+  Riot.reporter = RiotNotifier
 
-  # Using libnotify gem (ruby bindings using ffi)
-  # gem install libnotify
+=== Advanced usage
+
+  require 'riot'
+  require 'riot_notifier'
+
+  # Auto-detect in specified order notifier defined in RiotNotifier
+  Riot.reporter = RiotNotifier.try(:Libnotify, :RedgreenBinary)
+  Riot.reporter = RiotNotifier[:Libnotify, :RedgreenBinary] # sugar
+
+  # Use specific notifier class (libnotify)
   Riot.reporter = RiotNotifier::Libnotify
 
-== notify_redgreen
+  # Use my own notifier
+  class MyOwn < ::RiotNotifier::Base
+    # override .notify and #usable?
+  end
 
-  Your $HOME/bin/notify_redgreen
+  Riot.reporter = RiotNotifier[MyOwn] # try only this
+  Riot.reporter = RiotNotifier # try MyOwn first (auto-detection)
 
-  #!/bin/sh
+  # Use my own inline
+  Riot.reporter = Class.new(RiotNotifier::Base) do
+    def notify(color, msg)
+      MyFancyNotifierGem.notify(:color => color, :message => msg)
+    end
 
-  case "$1" in
-    red)
-      OPTIONS="-t 2500 -u critical -i /usr/share/icons/gnome/scalable/emotes/face-angry.svg :-("
-    ;;
-    green)
-      OPTIONS="-t 2000 -u normal -i /usr/share/icons/gnome/scalable/emblems/emblem-default.svg :-)"
-    ;;
-  esac
-  shift
+    def self.usable?
+      require 'my_fancy_notifier_gem'
+      true
+    rescue LoadError
+    end
+  end
 
-  notify-send $OPTIONS "$*"
+== Installation
 
-== Install via gemcutter
-
-  gem install gemcutter
-  gem tumble
   gem install riot_notifier
 
 == Authors
@@ -47,4 +56,3 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
 * talk to DBUS directly (ruby-dbus?) instead of `notify-send` binary
 * riot's assertions support blocks! (like asserts_topic.equals { topic }). Use it!
 * Test Libnotify somehow
-* Autodetect notify class
