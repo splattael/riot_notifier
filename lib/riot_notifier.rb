@@ -1,3 +1,5 @@
+require 'riot'
+
 module RiotNotifier
   class Base < ::Riot::DotMatrixReporter
     def notify(color, msg)
