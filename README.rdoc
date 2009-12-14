@@ -42,6 +42,7 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
       require 'my_fancy_notifier_gem'
       true
     rescue LoadError
+      false
     end
   end
 
