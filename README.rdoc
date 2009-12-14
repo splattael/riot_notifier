@@ -1,6 +1,7 @@
 = Notifier for testing framework riot.
 
-Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
+Notifies you about passes, errors, failures via custom notify libraries
+like libnotify.
 
 == Usage
 
