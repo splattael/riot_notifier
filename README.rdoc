@@ -54,6 +54,5 @@ Notifies you about passes, errors, failures via $HOME/bin/notify_redgreen
 * Peter Suschlik
 
 == TODO
-* talk to DBUS directly (ruby-dbus?) instead of `notify-send` binary
 * riot's assertions support blocks! (like asserts_topic.equals { topic }). Use it!
-* Test Libnotify somehow
+* Test auto-detection and Libnotify
