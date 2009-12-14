@@ -35,9 +35,9 @@ context "RiotNotifier" do
     end
   end # with MockNotifier
 
-  context "with RedgreenNotifier" do
+  context "with RedgreenBinary" do
     setup do
-      Class.new(RiotNotifier::RedgreenNotifier) do
+      Class.new(RiotNotifier::RedgreenBinary) do
         def exec(string)
           string
         end
