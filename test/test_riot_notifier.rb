@@ -1,4 +1,3 @@
-require 'rubygems'
 
 require 'helper'
 require 'stringio'
@@ -17,13 +16,17 @@ end
 
 context "RiotNotifier" do
   context "with MockNotifier" do
-    setup { MockNotifier.new }
+    setup do
+      reporter = MockNotifier.new
+      reporter.describe_context(Riot::Context.new("test") {})
+      reporter
+    end
 
-    asserts("displays failure in red") { topic.fail("desc", "failed") }.equals([:red, "FAILURE: failed"])
-    asserts("displays error in red") { topic.error("desc", "errored") }.equals([:red, "ERROR: errored"])
+    asserts("notifies failure in red") { topic.fail("desc", "failed") }.equals([:red, "FAILURE: failed"])
+    asserts("notifies error in red") { topic.error("desc", bt!(ArgumentError.new("errored"))) }.equals([:red, "ERROR: errored"])
     asserts("doesn't display results with bad results") do
       topic.report("desc", [:fail, "failure"])
-      topic.report("desc", [:error, "error"])
+      topic.report("desc", [:error, bt!(ArgumentError.new("error"))])
       topic.results(23.0)
     end.nil
 
