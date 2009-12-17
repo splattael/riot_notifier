@@ -13,6 +13,7 @@ begin
     gem.extra_rdoc_files = [ "README.rdoc" ]
 
     gem.add_dependency "riot", ">= 0.10.9"
+    gem.add_development_dependency "riot_notifier"
     gem.add_development_dependency "libnotify"
 
     gem.test_files = Dir.glob('test/test_*.rb')
