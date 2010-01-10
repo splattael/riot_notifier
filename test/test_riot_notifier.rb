@@ -11,10 +11,53 @@ class MockNotifier < ::RiotNotifier::None
     [ color, msg ]
   end
 
-  ::RiotNotifier.order.delete(self)
+  RiotNotifier.unregister(self)
 end
 
 context "RiotNotifier" do
+  context "module" do
+    setup do
+      RiotNotifier.unregister_all
+      RiotNotifier
+    end
+
+    asserts("empty order") { topic.order }.equals([])
+    asserts("fallback") { topic.new }.kind_of(RiotNotifier::None)
+
+    context "subclassing base" do
+      hookup do
+        Class.new(RiotNotifier::Base) do
+          def self.usable?
+            true
+          end
+
+          def self.name
+            :usable
+          end
+        end
+        Class.new(RiotNotifier::Base) do
+          def self.usable?
+            false
+          end
+
+          def self.name
+            :unusable
+          end
+        end
+      end
+
+      asserts("order") { topic.order.size }.equals(2)
+      asserts("first notifier is unusable") { !topic.order.first.usable? }
+      asserts("last notifier is usable") { topic.order.last.usable? }
+      asserts("usable notifier is") { topic.new.class.name }.equals(:usable)
+      asserts("after unregistering notifier order") do
+        topic.unregister topic.order.last
+        topic.order.size
+      end.equals(1)
+      asserts("fallback") { topic.new }.kind_of(RiotNotifier::None)
+    end
+  end
+
   context "with MockNotifier" do
     setup do
       reporter = MockNotifier.new

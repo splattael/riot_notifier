@@ -16,6 +16,18 @@ module RiotNotifier
     notifier_class.new(*args, &block)
   end
 
+  def self.register(notifier)
+    order.unshift notifier
+  end
+
+  def self.unregister(notifier)
+    order.delete notifier
+  end
+
+  def self.unregister_all
+    order.clear
+  end
+
   def self.order
     @order ||= []
   end

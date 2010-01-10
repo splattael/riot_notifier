@@ -26,7 +26,7 @@ module RiotNotifier
     end
 
     def self.inherited(notifier)
-      ::RiotNotifier.order.unshift notifier
+      ::RiotNotifier.register notifier
     end
 
     # Override

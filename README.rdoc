@@ -55,5 +55,4 @@ like libnotify.
 * Peter Suschlik
 
 == TODO
-* riot's assertions support blocks! (like asserts_topic.equals { topic }). Use it!
-* Test auto-detection and Libnotify
+* Test Libnotify
