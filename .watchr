@@ -1,21 +1,11 @@
 #!/usr/bin/env watchr
 
-def run(*args)
-  clear
-  system "ruby -rubygems -Ilib:test #{args.join(' ')}"
-end
-
-def run_tests
-  clear
-  system "rake test"
-end
-
-def clear
-  system "clear"
-end
-
-def underscore(file)
-  file.gsub('/', '_')
+begin
+  require File.join(ENV["HOME"], ".watchr.test.rb")
+rescue LoadError
+  warn "Unable to load #{File.join(ENV["HOME"], ".watchr.test.rb")}"
+  warn "You might try this: http://gist.github.com/raw/273574/8804dff44b104e9b8706826dc8882ed985b4fd13/.watchr.test.rb"
+  exit
 end
 
 watch('test/test_.*\.rb')  {|md| run md[0] }
@@ -23,6 +13,3 @@ watch('lib/(.*)\.rb')      { run_tests }
 watch('test/helper.rb')    { run_tests }
 
 run_tests
-
-Signal.trap("QUIT") { abort("\n") }
-Signal.trap("INT") { run_tests }
