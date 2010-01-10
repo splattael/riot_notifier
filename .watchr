@@ -1,10 +1,17 @@
+#!/usr/bin/env watchr
 
 def run(*args)
+  clear
   system "ruby -rubygems -Ilib:test #{args.join(' ')}"
 end
 
 def run_tests
+  clear
   system "rake test"
+end
+
+def clear
+  system "clear"
 end
 
 def underscore(file)
@@ -12,7 +19,7 @@ def underscore(file)
 end
 
 watch('test/test_.*\.rb')  {|md| run md[0] }
-watch('lib/(.*)\.rb')      {|md| run "test/test_#{underscore(md[1])}.rb" }
+watch('lib/(.*)\.rb')      { run_tests }
 watch('test/helper.rb')    { run_tests }
 
 run_tests
