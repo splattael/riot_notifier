@@ -3,6 +3,7 @@ require 'riot'
 
 require 'riot_notifier'
 
+RiotNotifier::Base.story # TODO use RiotNotifier.story
 Riot.reporter = RiotNotifier
 
 module Riot
