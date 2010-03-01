@@ -31,9 +31,9 @@ module RiotNotifier
 
     # Override
 
-    def fail(desc, message)
+    def fail(desc, message, file, line)
       super
-      notify(:red, "FAILURE: #{message}")
+      notify(:red, "FAILURE: #{message}@#{file}:#{line}")
     end
 
     def error(desc, error)

@@ -65,7 +65,7 @@ context "RiotNotifier" do
       reporter
     end
 
-    asserts("notifies failure in red") { topic.fail("desc", "failed") }.equals([:red, "FAILURE: failed"])
+    asserts("notifies failure in red") { topic.fail("desc", "failed", "file", 23) }.equals([:red, "FAILURE: failed@file:23"])
     asserts("notifies error in red") { topic.error("desc", bt!(ArgumentError.new("errored"))) }.equals([:red, "ERROR: errored"])
     asserts("doesn't display results with bad results") do
       topic.report("desc", [:fail, "failure"])
