@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{riot_notifier}
-  s.version = "0.0.8"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Peter Suschlik"]
-  s.date = %q{2010-01-13}
+  s.date = %q{2010-03-01}
   s.email = %q{peter-riot_notifier@suschlik.de}
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -26,13 +26,14 @@ Gem::Specification.new do |s|
      "lib/riot_notifier/module.rb",
      "lib/riot_notifier/none.rb",
      "lib/riot_notifier/redgreen_binary.rb",
+     "riot_notifier.gemspec",
      "test/helper.rb",
      "test/test_riot_notifier.rb"
   ]
   s.homepage = %q{http://github.com/splattael/riot_notifier}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Simple notifier for riot}
   s.test_files = [
     "test/test_riot_notifier.rb"
