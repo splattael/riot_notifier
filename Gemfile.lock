@@ -1,21 +1,4 @@
 --- 
-dependencies: 
-  libnotify: 
-    group: 
-    - :test
-    version: ">= 0"
-  jeweler: 
-    group: 
-    - :test
-    version: ">= 0"
-  riot_notifier: 
-    group: 
-    - :default
-    version: ">= 0"
-  riot: 
-    group: 
-    - :default
-    version: ">= 0"
 specs: 
 - rake: 
     version: 0.8.7
@@ -32,7 +15,7 @@ specs:
 - jeweler: 
     version: 1.4.0
 - libnotify: 
-    version: 0.1.4
+    version: 0.2.0
 - rr: 
     version: 0.10.11
 - term-ansicolor: 
@@ -40,8 +23,25 @@ specs:
 - riot: 
     version: 0.11.2
 - riot_notifier: 
-    version: 0.1.1
-hash: 6a111bec9b2b682a5f223928b9f0e22aad77edaa
+    version: 0.2.0
+hash: 9d435b09bed3916705d88f9e3e403a8349f70597
 sources: 
 - Rubygems: 
     uri: http://rubygems.org
+dependencies: 
+  libnotify: 
+    version: ">= 0.2.0"
+    group: 
+    - :test
+  riot_notifier: 
+    version: ">= 0"
+    group: 
+    - :default
+  jeweler: 
+    version: ">= 0"
+    group: 
+    - :test
+  riot: 
+    version: ">= 0"
+    group: 
+    - :default

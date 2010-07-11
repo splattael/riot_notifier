@@ -5,5 +5,5 @@ gem "riot_notifier"
 
 group :test do
   gem "jeweler"
-  gem "libnotify"
+  gem "libnotify", ">= 0.2.0"
 end
