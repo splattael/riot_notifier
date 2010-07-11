@@ -1,1 +1,1 @@
-rvm gemset create riot_notifier
+rvm gemset use riot_notifier --create
