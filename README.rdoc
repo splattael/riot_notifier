@@ -51,6 +51,14 @@ like libnotify.
 
   gem install riot_notifier
 
+== Testing
+
+  git co git://github.com/splattael/riot_notifier.git
+  cd riot_notifier
+  gem install bundler
+  bundle install
+  rake
+
 == Authors
 * Peter Suschlik
 
