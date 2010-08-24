@@ -89,6 +89,10 @@ context "RiotNotifier" do
         def exec(string)
           string
         end
+
+        def self.usable?
+          true
+        end
       end.new
     end
 
