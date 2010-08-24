@@ -3,7 +3,7 @@ dependencies:
   libnotify: 
     group: 
     - :test
-    version: ">= 0.2.0"
+    version: ~> 0.2.0
   jeweler: 
     group: 
     - :default
@@ -15,7 +15,7 @@ dependencies:
   riot: 
     group: 
     - :default
-    version: ">= 0"
+    version: ~> 0.11.0
 specs: 
 - rake: 
     version: 0.8.7
@@ -41,7 +41,7 @@ specs:
     version: 0.11.3
 - riot_notifier: 
     version: 0.2.0
-hash: 176c94d812ccea89de941e9543171288490a6cd3
+hash: a92e357b98e61ed637d518ddbe08484869671c28
 sources: 
 - Rubygems: 
     uri: http://rubygems.org
