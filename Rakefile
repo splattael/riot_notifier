@@ -28,7 +28,6 @@ end
 require 'rake/testtask'
 desc 'Default: run unit tests.'
 task :default => :test
-task :test => :check_dependencies
 
 Rake::TestTask.new(:test) do |test|
   test.test_files = FileList.new('test/test_*.rb')

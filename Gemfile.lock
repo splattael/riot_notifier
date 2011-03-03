@@ -1,47 +1,29 @@
---- 
-dependencies: 
-  libnotify: 
-    group: 
-    - :test
-    version: ~> 0.2.0
-  jeweler: 
-    group: 
-    - :default
-    version: ">= 0"
-  riot_notifier: 
-    group: 
-    - :default
-    version: ">= 0"
-  riot: 
-    group: 
-    - :default
-    version: ~> 0.11.0
-specs: 
-- rake: 
-    version: 0.8.7
-- ffi: 
-    version: 0.6.3
-- gemcutter: 
-    version: 0.6.1
-- git: 
-    version: 1.2.5
-- json_pure: 
-    version: 1.4.6
-- rubyforge: 
-    version: 2.0.4
-- jeweler: 
-    version: 1.4.0
-- libnotify: 
-    version: 0.2.0
-- rr: 
-    version: 1.0.0
-- term-ansicolor: 
-    version: 1.0.5
-- riot: 
-    version: 0.11.3
-- riot_notifier: 
-    version: 0.2.0
-hash: a92e357b98e61ed637d518ddbe08484869671c28
-sources: 
-- Rubygems: 
-    uri: http://rubygems.org
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ffi (1.0.6)
+      rake (>= 0.8.7)
+    git (1.2.5)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
+    libnotify (0.2.0)
+      ffi (>= 0.6.2)
+    rake (0.8.7)
+    riot (0.11.4)
+      rr
+      term-ansicolor
+    riot_notifier (0.3.0)
+      riot (~> 0.11.0)
+    rr (1.0.2)
+    term-ansicolor (1.0.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  jeweler
+  libnotify (~> 0.2.0)
+  riot (~> 0.11.0)
+  riot_notifier
