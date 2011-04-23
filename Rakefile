@@ -1,28 +1,5 @@
-require 'rake'
-
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "riot_notifier"
-    gem.summary = 'Simple notifier for riot'
-    gem.email = "peter-riot_notifier@suschlik.de"
-    gem.homepage = "http://github.com/splattael/riot_notifier"
-    gem.authors = ["Peter Suschlik"]
-
-    gem.has_rdoc = true
-    gem.extra_rdoc_files = [ "README.rdoc" ]
-
-    # TODO Use Gemfile!
-    gem.add_dependency "riot", "~> 0.11.0"
-    gem.add_development_dependency "riot_notifier"
-    gem.add_development_dependency "libnotify", "~> 0.2.0"
-
-    gem.test_files = Dir.glob('test/test_*.rb')
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
 # Test
 require 'rake/testtask'
@@ -35,15 +12,18 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-# RDoc
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rd|
-  rd.title = "Riot Notifier"
-  rd.main = "README.rdoc"
-  rd.rdoc_files.include("README.rdoc", "lib/*.rb")
-  rd.rdoc_dir = "doc"
+# Yard
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+  end
 end
 
+desc "Alias for `rake yard`"
+task :doc => :yard
 
 # Misc
 desc "Tag files for vim"
