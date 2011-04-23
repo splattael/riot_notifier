@@ -100,4 +100,9 @@ context "RiotNotifier" do
     asserts("escape <") { topic.notify(:red, "<Topic>") }.matches(/&lt;Topic>/)
     asserts("quote double quotes") { topic.notify(:red, %{"errored"}) }.matches(/\\"errored\\"/)
   end
+
+  context "version" do
+    setup { RiotNotifier::VERSION }
+    asserts_topic.matches(/\d+\.\d+\.\d+/)
+  end
 end

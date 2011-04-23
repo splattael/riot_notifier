@@ -1,5 +1,7 @@
+Gemfile.lock
 doc
 pkg
 coverage
 tags
 .bundle
+.yardoc
