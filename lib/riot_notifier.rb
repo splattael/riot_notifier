@@ -1,5 +1,6 @@
 require 'riot'
 
+require 'riot_notifier/version'
 require 'riot_notifier/ext'
 require 'riot_notifier/module'
 require 'riot_notifier/base'
