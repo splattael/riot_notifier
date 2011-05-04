@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('yard')
 
   s.add_runtime_dependency('riot',      "~> 0.11.0")
-  s.add_runtime_dependency('libnotify', "~> 0.2.0")
+  s.add_runtime_dependency('libnotify', "~> 0.5.0")
 end

@@ -3,25 +3,19 @@ module RiotNotifier
 
   class Libnotify < Base
     ICON = {
-      :green => %w[
-        /usr/share/icons/gnome/scalable/emblems/emblem-default.svg
-        /usr/share/icons/gnome/256x256/emotes/face-laugh.png
-      ],
-      :red => %w[
-        /usr/share/icons/gnome/scalable/emotes/face-angry.svg
-        /usr/share/icons/gnome/256x256/emotes/face-angry.png
-      ]
+      :green  =>  "emblem-default.png",
+      :red    =>  "false-angry.png"
     }
 
     OPTIONS = {
       :green => {
-        :icon_path => ICON[:green].find { |path| File.exist?(path) },
+        :icon_path => ICON[:green],
         :timeout => 2.5,
         :urgency => :normal,
         :summary => ":-)"
       },
       :red => {
-        :icon_path => ICON[:red].find { |path| File.exist?(path) },
+        :icon_path => ICON[:red],
         :timeout => 2.5,
         :urgency => :critical,
         :summary => ":-("
